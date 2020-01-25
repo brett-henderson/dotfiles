@@ -9,9 +9,9 @@ There are certain packages and/or repositories that are used by these dotfiles. 
 | [microsoft/cascadia-code](https://github.com/microsoft/cascadia-code) | Font | (config.rosi) |
 | rofi                    | App launcher         | (config.rasi) |
 | tmux                    | Terminal multiplexer | (tmux.conf)   |
-| vim                     | Text editor          | (.vimrc)      |
-| zsh                     | Shell                | (.zshrc)      |
-| zsh-syntax-highlighting | Shell                | (.zshrc)      |
+| vim                     | Text editor          | (vimrc)       |
+| zsh                     | Shell                | (zshrc)       |
+| zsh-syntax-highlighting | Shell                | (zshrc)       |
 
 ## Installation
 I prefer to keep my repository separate from any other files that I may need or want to keep secret. For that reason, the dotfiles are all symlinked to their usual path.
