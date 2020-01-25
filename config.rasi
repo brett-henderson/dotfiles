@@ -1,0 +1,5 @@
+configuration {
+    font: "Cascadia Code 10";
+    modi: "drun,run";
+    theme: "glue_pro_blue";
+}
