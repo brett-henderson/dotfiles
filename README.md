@@ -6,7 +6,7 @@ There are certain packages and/or repositories that are used by these dotfiles. 
 
 | Package/Repository      | Purpose              | Used By       |
 |-------------------------|----------------------|---------------|
-| [microsoft/cascadia-code](https://github.com/microsoft/cascadia-code) | Font | (config.rosi) |
+| [microsoft/cascadia-code](https://github.com/microsoft/cascadia-code) | Font | (config.rasi) |
 | rofi                    | App launcher         | (config.rasi) |
 | tmux                    | Terminal multiplexer | (tmux.conf)   |
 | vim                     | Text editor          | (vimrc)       |
@@ -20,6 +20,6 @@ The script performs the following actions:
 * Symlink: Remove if found
 * File: Backup if found
 * Path: Create if not found
-* Create Symlinks for the dotfiles to their appropriate paths
+* Create new symlinks for the dotfiles to their appropriate paths
 
 To use the script, simply run it without any arguments. Ensure that the script remains in the dotfiles folder as it links relative to its location.
