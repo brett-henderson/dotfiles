@@ -39,19 +39,22 @@ set tabstop=4
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Create a small window below that displays the output of running the
 " flake8 linter against the current file
-function! RunFlake8(code_buf)
+function! RunFlake8()
+    let code_buf = expand("%")
     let lint_buf = bufwinnr("flake8")
     if lint_buf > 0
         :exe lint_buf "wincmd w"
-        :ter ++curwin flake8 . a:code_buf
+        :exe "ter ++curwin flake8 " code_buf
+        :echo code_buf
         :wincmd p
     else
-        :bel ter ++rows=10 flake8 . a:code_buf
+        :exe "bel ter ++rows=10 flake8 " code_buf
+        :echo code_buf
         :wincmd p
     endif
 endfunction
 
-:nnoremap <F8> :call RunFlake8(expand("%"))<cr>
+nnoremap <F8> :call RunFlake8()<cr>
 
 " Close the flake8 window
 function! CloseFlake8()
@@ -62,4 +65,4 @@ function! CloseFlake8()
     endif
 endfunction
 
-:nnoremap <leader><F8> :call CloseFlake8()<cr>
+nnoremap <leader><F8> :call CloseFlake8()<cr>
