@@ -45,11 +45,9 @@ function! RunFlake8()
     if lint_buf > 0
         :exe lint_buf "wincmd w"
         :exe "ter ++curwin flake8 " code_buf
-        :echo code_buf
         :wincmd p
     else
         :exe "bel ter ++rows=10 flake8 " code_buf
-        :echo code_buf
         :wincmd p
     endif
 endfunction
