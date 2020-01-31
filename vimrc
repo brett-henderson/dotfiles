@@ -20,6 +20,7 @@ set number  " show line numbers
 " Navigation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quicker split mode navigtion
+" This doesn't seem to work for interactive :terminal
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -51,3 +52,14 @@ function! RunFlake8(code_buf)
 endfunction
 
 :nnoremap <F8> :call RunFlake8(expand("%"))<cr>
+
+" Close the flake8 window
+function! CloseFlake8()
+    let lint_buf = bufwinnr("flake8")
+    if lint_buf > 0
+        :exe lint_buf "wincmd w"
+        :wincmd q
+    endif
+endfunction
+
+:nnoremap <leader><F8> :call CloseFlake8()<cr>
