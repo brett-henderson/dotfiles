@@ -33,3 +33,21 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WIP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Create a small window below that displays the output of running the
+" flake8 linter against the current file
+function! RunFlake8(code_buf)
+    let lint_buf = bufwinnr("flake8")
+    if lint_buf > 0
+        :exe lint_buf "wincmd w"
+        :ter ++curwin flake8 . a:code_buf
+        :wincmd p
+    else
+        :bel ter ++rows=10 flake8 . a:code_buf
+        :wincmd p
+    endif
+endfunction
+
+:nnoremap <F8> :call RunFlake8(expand("%"))<cr>
