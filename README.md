@@ -6,7 +6,7 @@ There are certain packages and/or repositories that are used by these dotfiles. 
 
 | Package/Repository      | Purpose              | Used By       |
 |-------------------------|----------------------|---------------|
-| [microsoft/cascadia-code](https://github.com/microsoft/cascadia-code) | Font | (config.rasi) |
+| [Fira](https://github.com/mozilla/Fira) | Font | (config.rasi) |
 | rofi                    | App launcher         | (config.rasi) |
 | tmux                    | Terminal multiplexer | (tmux.conf)   |
 | vim                     | Text editor          | (vimrc)       |
