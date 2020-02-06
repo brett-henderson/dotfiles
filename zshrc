@@ -3,8 +3,8 @@
 ########################################################################
 alias grep='grep --color=auto'
 alias ls='ls --color=auto -F'
-alias ll='ls -lhF'
-alias la='ls -aF'
+alias ll='ls -lhA'
+alias la='ls -A'
 alias reload='source $HOME/.zshrc'
 alias sudo='sudo ' # Allow sudo for aliases
 alias tree='tree -C'
@@ -31,6 +31,14 @@ typeset -U PATH path
 path=("/usr/local/sbin" "/usr/local/bin" "/usr/bin" "/opt/intel/mediasdk/bin" "/usr/bin/site_perl" "/usr/bin/vendor_perl" "/usr/bin/core_perl" "$HOME/.local/bin")
 export PATH
 export EDITOR="vim"
+
+########################################################################
+#	History
+########################################################################
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 
 ########################################################################
 #	MISC
