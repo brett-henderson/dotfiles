@@ -62,3 +62,12 @@ if [ -f $arch_syntax ]; then
 elif [ -f $deb_syntax ]; then
     source $deb_syntax
 fi
+
+########################################################################
+#	Terminal Logging
+########################################################################
+if [[ $(ps -o comm= $PPID) != "script" ]]; then
+    user_id=$(id -u)
+    ctime=$(date +%Y%m%d_%H%M%S)
+    script -f $HOME/pentest/terminal_logs/${user_id}_${ctime}_terminal.log
+fi
