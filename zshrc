@@ -50,8 +50,10 @@ bindkey -e # Emacs keybindings for CLI because $EDITOR is set to "vim"
 ########################################################################
 autoload -Uz promptinit
 promptinit
+setopt prompt_subst
 
-PS1='%B%F{blue}%n@%m%f %F{magenta}%~%f %F{blue}>%f%b '
+user_id=$(id -u)
+PS1='%B%F{blue}${user_id}@%m%f %F{magenta}%~%f %F{blue}>%f%b '
 RPS1='%B%F{magenta}[%D{%d %B, %Y} - %t]%f%b'
 
 # Fish-like shell syntax highlighting (must install zsh-syntax-highlighting)
