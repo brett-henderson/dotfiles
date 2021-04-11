@@ -1,0 +1,24 @@
+Config {
+    -- appearance
+      font =        "xft:Noto Mono:size=10:weight=bold:antialias=true:hinting=true"
+    , bgColor =     "black"
+    , fgColor =     "#646464"
+    , position =    Top
+    , border =      BottomB
+    , borderColor = "#646464" 
+
+    -- behaviour
+    , hideOnStart = False
+    , persistent = True
+
+    -- layout
+    , sepChar = "%"     -- delineator between plugin names and text
+    , alignSep = "}{"   -- separator between left-right alignment
+    , template = "%StdinReader%}{ %date% "
+
+    -- plugins
+    , commands = [
+                   Run StdinReader
+                 , Run Date "%b %d %Y - (%H:%M)" "date" 10
+                 ]
+}

@@ -65,8 +65,12 @@ function display_warning() {
 display_warning
 
 echo ""
-link "$HOME/.tmux.conf"
-link "$HOME/.vimrc"
-link "$HOME/.zshrc"
-link "$HOME/.config/rofi/config.rasi"
+#link "$HOME/.config/rofi/config.rasi"
+#link "$HOME/.tmux.conf"
+#link "$HOME/.vimrc"
+#link "$HOME/.zshrc"
+#link "$HOME/.xmonad/xmonad.hs"
+#link "$HOME/.xmobar/xmobarrc"
+#link "$HOME/.Xresources"
+#link "$HOME/.xsession"
 echo ""
