@@ -28,9 +28,11 @@ compinit
 #	Environment
 ########################################################################
 typeset -U PATH path
-path=("/usr/local/sbin" "/usr/local/bin" "/usr/bin" "/opt/intel/mediasdk/bin" "/usr/bin/site_perl" "/usr/bin/vendor_perl" "/usr/bin/core_perl" "$HOME/.local/bin")
+path=("/usr/local/bin" "/usr/bin" "/bin" "/usr/local/sbin" "/usr/bin/site_perl" "/usr/bin/vendor_perl" "/usr/bin/core_perl" "$HOME/go/bin" "$HOME/dotnet")
 export PATH
 export EDITOR="vim"
+export DOTNET_ROOT="$HOME/dotnet"
+export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$(${DOTNET_ROOT}/dotnet --version)/Sdks"
 
 ########################################################################
 #	History
@@ -55,10 +57,5 @@ PS1='%B%F{blue}%n@%m%f %F{magenta}%~%f %F{blue}>%f%b '
 RPS1='%B%F{magenta}[%D{%d %B, %Y} - %t]%f%b'
 
 # Fish-like shell syntax highlighting (must install zsh-syntax-highlighting)
-arch_syntax="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-deb_syntax="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-if [ -f $arch_syntax ]; then
-    source $arch_syntax
-elif [ -f $deb_syntax ]; then
-    source $deb_syntax
-fi
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
