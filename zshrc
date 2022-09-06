@@ -26,9 +26,9 @@ autoload -Uz compinit && compinit
 ########################################################################
 #	Environment
 ########################################################################
-typeset -U PATH path
-# TODO: Make path assignment less destructive.
-path=("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin")
+typeset -U path PATH # The -U ensures path variables are unique
+# Add desired paths to append with $path below
+path=($path)
 export PATH
 export EDITOR='vim'
 
