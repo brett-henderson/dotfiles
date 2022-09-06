@@ -28,7 +28,7 @@ autoload -Uz compinit && compinit
 ########################################################################
 typeset -U PATH path
 # TODO: Make path assignment less destructive.
-path=("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/local/games" "/usr/games")
+path=("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin")
 export PATH
 export EDITOR='vim'
 
