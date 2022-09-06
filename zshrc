@@ -21,18 +21,20 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '$HOME/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 ########################################################################
 #	Environment
 ########################################################################
 typeset -U PATH path
-path=("/usr/local/bin" "/usr/bin" "/bin" "/usr/local/sbin" "/usr/bin/site_perl" "/usr/bin/vendor_perl" "/usr/bin/core_perl" "$HOME/go/bin" "$HOME/dotnet")
+# TODO: Make path assignment less destructive.
+path=("/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/local/games" "/usr/games")
 export PATH
-export EDITOR="vim"
-export DOTNET_ROOT="$HOME/dotnet"
-export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$(${DOTNET_ROOT}/dotnet --version)/Sdks"
+export EDITOR='vim'
+
+# Keeping for now. Don't remember why I needed this.
+#export DOTNET_ROOT="$HOME/dotnet"
+#export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$(${DOTNET_ROOT}/dotnet --version)/Sdks"
 
 ########################################################################
 #	History
@@ -45,17 +47,26 @@ setopt appendhistory
 ########################################################################
 #	MISC
 ########################################################################
-bindkey -e # Emacs keybindings for CLI because $EDITOR is set to "vim"
+bindkey -e # Emacs keybindings for CLI because $EDITOR is set to vim
 
 ########################################################################
 #	PROMPT
 ########################################################################
-autoload -Uz promptinit
-promptinit
+autoload -Uz vcs_info
+precmd() { vcs_info }
+setopt PROMPT_SUBST
 
-PS1='%B%F{blue}%n@%m%f %F{magenta}%~%f %F{blue}>%f%b '
-RPS1='%B%F{magenta}[%D{%d %B, %Y} - %t]%f%b'
+zstyle ':vcs_info:git:*' formats '%F{027}[%f%F{171}%b%f%F{027}]%f'
+
+# Todo: Add variables for colors to ease visibility
+# ToDo: Work in this line from another zshrc to change color if root user
+#if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
+
+PROMPT='%B%F{027}%n@%m%f %F{171}%~%f %F{027}>%f%b '
+RPROMPT='${vcs_info_msg_0_}'
 
 # Fish-like shell syntax highlighting (must install zsh-syntax-highlighting)
-source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
+arch_zsh='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+debian_zsh='/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+[[ -f $arch_zsh ]] && source $arch_zsh
+[[ -f $debian_zsh ]] && source $debian_zsh
